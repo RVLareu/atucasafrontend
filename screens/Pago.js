@@ -44,7 +44,7 @@ export default class Pago extends Component {
           renderItem={({item}) => {
             return (
               <View>
-                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() => this.props.navigation.navigate("Home")}>
+                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() => this.props.navigation.navigate("Calificar")}>
                 
                   <Image style={styles.cardImage} source={{uri:item.image}}/>
                 </TouchableOpacity>

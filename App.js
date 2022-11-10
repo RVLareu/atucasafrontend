@@ -6,6 +6,8 @@ import Home from "./screens/Home";
 import Perfil from "./screens/Perfil";
 import Calificaciones from './screens/Calificaciones';
 import Buscador from './screens/Buscador';
+import AgendarCita from './screens/AgendarCita';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -32,7 +34,12 @@ const App = () => {
           <Stack.Screen
             name="Buscar"
             component={Buscador}
-          />                         
+          />    
+          <Stack.Screen
+            name="AgendarCita"
+            component={AgendarCita}
+          />  
+                         
         </Stack.Navigator>
     </NavigationContainer>
   );

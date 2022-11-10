@@ -39,9 +39,16 @@ export default class AgendarCita extends Component {
           onSelectedChange={date => this.state.selectedDate=date}
         />
         
-       /* <Button
+       <Button
           title="Aceptar"
-        />*/
+          onPress={()=>this.props.navigation.navigate("Pago")}
+        />
+        <Button
+          style={styles.button2}
+          title="Cancelar"
+          color="#a9a9a9"
+          onPress={()=>this.props.navigation.navigate("Perfil")}
+        />
       </View>
     );
   }
@@ -129,4 +136,5 @@ const styles = StyleSheet.create({
   count:{
     fontSize:18,
   },
+  
 });

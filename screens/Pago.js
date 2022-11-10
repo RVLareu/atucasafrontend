@@ -16,8 +16,9 @@ export default class Pago extends Component {
     super(props);
     this.state = {
       data: [
-        {id:1,  title: "Perfil",      color:"#0f3648", image:"https://img.icons8.com/windows/512/contacts.png"},
-        {id:2,  title: "Buscar",     color:"#0f3648", image:"https://img.icons8.com/ios-glyphs/512/search.png"},
+        {id:1,  title: "Efectivo",      color:"#0f3648", image:"https://img.icons8.com/office/512/cash-in-hand.png"},
+        {id:2,  title: "Crédito",     color:"#0f3648", image:"https://img.icons8.com/office/512/visa.png"},
+        {id:2,  title: "Crypto",     color:"#0f3648", image:"https://img.icons8.com/office/512/blockchain.png"},
       ]
     };
   }
@@ -26,7 +27,11 @@ export default class Pago extends Component {
 
   render() {
     return (
+    
       <View style={styles.container}>
+        
+        <Text style={styles.title}>Elija un método de pago</Text>
+      
         <FlatList style={styles.list}
           contentContainerStyle={styles.listContainer}
           data={this.state.data}
@@ -35,10 +40,11 @@ export default class Pago extends Component {
           keyExtractor= {(item) => {
             return item.id;
           }}
+          
           renderItem={({item}) => {
             return (
               <View>
-                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() => this.props.navigation.navigate(item.title)}>
+                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() => this.props.navigation.navigate("Home")}>
                 
                   <Image style={styles.cardImage} source={{uri:item.image}}/>
                 </TouchableOpacity>
@@ -123,6 +129,7 @@ const styles = StyleSheet.create({
     fontSize:24,
     flex:1,
     alignSelf:'center',
-    fontWeight:'bold'
+    fontWeight:'bold',
+    color: "#00CED1"
   },
 });     

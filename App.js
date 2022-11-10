@@ -7,6 +7,7 @@ import Perfil from "./screens/Perfil";
 import Calificaciones from './screens/Calificaciones';
 import Buscador from './screens/Buscador';
 import AgendarCita from './screens/AgendarCita';
+import Pago from './screens/Pago';
 
 
 const Stack = createNativeStackNavigator();
@@ -39,6 +40,10 @@ const App = () => {
             name="AgendarCita"
             component={AgendarCita}
           />  
+          <Stack.Screen
+            name="Pago"
+            component={Pago}
+          />
                          
         </Stack.Navigator>
     </NavigationContainer>

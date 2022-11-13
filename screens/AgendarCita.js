@@ -1,13 +1,23 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  Button
 } from 'react-native';
+import DatePicker from 'react-native-modern-datepicker';
+ 
 
-export default class Perfil extends Component {
+export default class AgendarCita extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+            selectedDate:""       
+        }
+  }
 
   render() {
     return (
@@ -15,38 +25,30 @@ export default class Perfil extends Component {
           <View style={styles.header}></View>
           <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 
-          <View style={styles.profileDetail}>
-            <View style={styles.detailContent}>
-              <Text style={styles.title}>Trabajos</Text>
-              <Text style={styles.count}>200</Text>
-            </View>
-            <View style={styles.detailContent}>
-              <Text style={styles.title}>Calificación</Text>
-              <Text style={styles.count}>3.3</Text>
-            </View>
-          </View>
-
-
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>John Doe</Text>
               <Text style={styles.info}>Electricista / Plomero</Text>
-              <Text style={styles.description}>Trabajador Responsable comprometido con el trabajo del lorem ipsum lorem ipsum</Text>
-              
-              <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Chat")}>
-              <Image style={styles.icon} source={{uri: "https://img.icons8.com/ios-glyphs/512/filled-sent.png"}}/>
-                <Text>Enviar Mensaje</Text>  
-              </TouchableOpacity>              
-              <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("AgendarCita")}>
-              <Image style={styles.icon} source={{uri: "https://img.icons8.com/ios-filled/512/calendar-11.png"}}/>
-                <Text>Agendar Cita</Text> 
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Calificaciones")}>
-              <Image style={styles.icon} source={{uri: "https://img.icons8.com/material/512/christmas-star.png"}}/>
-                <Text>Ver Calificaciones</Text> 
-              </TouchableOpacity>
             </View>
         </View>
+   
+        <br/>  
+        <Text style={styles.datePicker}>Seleccione una fecha</Text>
+        
+        <DatePicker
+          onSelectedChange={date => this.state.selectedDate=date}
+        />
+        
+       <Button
+          title="Aceptar"
+          onPress={()=>this.props.navigation.navigate("Pago")}
+        />
+        <Button
+          style={styles.button2}
+          title="Cancelar"
+          color="#a9a9a9"
+          onPress={()=>this.props.navigation.navigate("Perfil")}
+        />
       </View>
     );
   }
@@ -84,15 +86,16 @@ const styles = StyleSheet.create({
   name:{
     fontSize:28,
     color: "#696969",
-    fontWeight: "600"
+    fontWeight: "600",
+    marginTop:40,
   },
   info:{
     fontSize:16,
     color: "#00BFFF",
-    marginTop:10
+    marginTop:10,
   },
-  description:{
-    fontSize:16,
+  datePicker:{
+    fontSize:18,
     color: "#696969",
     marginTop:10,
     textAlign: 'center'
@@ -133,4 +136,5 @@ const styles = StyleSheet.create({
   count:{
     fontSize:18,
   },
+  
 });

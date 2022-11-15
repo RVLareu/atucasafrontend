@@ -8,6 +8,7 @@ import {
   Alert,
   ScrollView,
   TextInput,
+  ImageBackground,
   FlatList
 } from 'react-native';
 
@@ -18,25 +19,15 @@ export default class Buscador extends Component {
     this.state = {
       data: [
         {id:1, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - Carpintero"},
-        {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Juan Perez - Plomero"},
-        {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Juan Perez - Electricista"}, 
-        {id:4, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Juan Perez - Plomero"}, 
-        {id:5, icon:"https://img.icons8.com/material/512/electricity.png", description: "Juan Perez - Electricista"}, 
-        {id:6, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - - Carpintero"}, 
-        {id:7, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Juan Perez - Plomero"}, 
-        {id:8, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Juan Perez - Plomero"},
-        {id:9, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - - Carpintero"},
+        {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Enrique Romero - Plomero"},
+        {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Román Vázquez - Informática"}, 
+
       ],
       dataToShow: [
         {id:1, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - Carpintero"},
-        {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Juan Perez - Plomero"},
-        {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Juan Perez - Electricista"}, 
-        {id:4, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Juan Perez - Plomero"}, 
-        {id:5, icon:"https://img.icons8.com/material/512/electricity.png", description: "Juan Perez - Electricista"}, 
-        {id:6, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - - Carpintero"}, 
-        {id:7, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Juan Perez - Plomero"}, 
-        {id:8, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Juan Perez - Plomero"},
-        {id:9, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - - Carpintero"},
+        {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Román Vázquez - Informática"},
+        {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Lucas Monk - Electricista"}, 
+
 
       ],
     };
@@ -48,6 +39,10 @@ export default class Buscador extends Component {
 
   render() {
     return (
+      <ImageBackground
+      source={require('../assets/background.png')}
+      style={styles.background}
+    >
       <View style={styles.container}>
         <View style={styles.formContent}>
           <View style={styles.inputContainer}>
@@ -86,6 +81,8 @@ export default class Buscador extends Component {
               </View>
             )}}/>
       </View>
+
+      </ImageBackground>
     );
   }
 }
@@ -93,7 +90,6 @@ export default class Buscador extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0a0a1a',
   },
   formContent:{
     flexDirection: 'row',
@@ -149,9 +145,12 @@ const styles = StyleSheet.create({
     marginTop:5,
     marginBottom:5,
     backgroundColor: '#FFFFFF',
+    borderColor: 'black',
+    broder: '2px',
     flexDirection: 'row',
     borderRadius:10,
-  },
+    boxShadow: '5px 5px 2px lightblue'
+    },
   image:{
     width:45,
     height:45,
@@ -168,8 +167,10 @@ const styles = StyleSheet.create({
     bottom: 10,
     fontSize:18,
     color: "#3498db",
-
-
+    },
+    background: {
+      width: '100%',
+      height: '100%'
     },
   icon:{
     // must be bottom right

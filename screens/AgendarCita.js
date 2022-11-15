@@ -5,7 +5,9 @@ import {
   View,
   Image,
   TouchableOpacity,
-  Button
+  Button,
+  ScrollView,
+  ImageBackground
 } from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
  
@@ -21,43 +23,51 @@ export default class AgendarCita extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-          <View style={styles.header}></View>
-          <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+      <ScrollView style={styles.container}>
+          <View style={styles.header}>
+            <ImageBackground
+              source={require('../assets/background.png')}
+              style={styles.background}
+            ></ImageBackground>
+          </View>
+          <Image style={styles.avatar} source={{uri: 'https://image.shutterstock.com/mosaic_250/2780032/1854697390/stock-photo-head-shot-young-attractive-businessman-in-glasses-standing-in-modern-office-pose-for-camera-1854697390.jpg'}}/>
 
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>John Doe</Text>
-              <Text style={styles.info}>Electricista / Plomero</Text>
+              <Text style={styles.name}>Román Vázquez</Text>
+              <Text style={styles.info}>Informática</Text>
             </View>
-        </View>
+          </View>
    
         <br/>  
-        <Text style={styles.datePicker}>Seleccione una fecha</Text>
+        <Text style={styles.textSelect}>Seleccione una fecha</Text>
+        <View style={styles.datePickerView}>
+          <DatePicker style={styles.datePicker}
+            onSelectedChange={date => this.state.selectedDate=date}
+          />
+        </View>
         
-        <DatePicker
-          onSelectedChange={date => this.state.selectedDate=date}
-        />
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Pago")}>
+            <Text style={styles.text}>Aceptar</Text>  
+          </TouchableOpacity>        
+          <TouchableOpacity style={styles.buttonContainerCancel} onPress={()=>this.props.navigation.navigate("Perfil")}>
+            <Text style={styles.text}>Cancelar</Text>  
+          </TouchableOpacity>        
+        </View>
         
-       <Button
-          title="Aceptar"
-          onPress={()=>this.props.navigation.navigate("Pago")}
-        />
-        <Button
-          style={styles.button2}
-          title="Cancelar"
-          color="#a9a9a9"
-          onPress={()=>this.props.navigation.navigate("Perfil")}
-        />
-      </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#0a0a1a",
     height:200,
+  },
+  background: {
+    width: '100%',
+    height: 200
   },
   avatar: {
     width: 130,
@@ -69,6 +79,45 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     position: 'absolute',
     marginTop:130
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#54b6e9',
+    color: 'black',
+    width: 350,
+    borderRadius: 25,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: "2%",
+    marginTop: '4%'
+
+  },
+  buttonContainerCancel: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#a9a9a9',
+    color: 'black',
+    width: 350,
+    borderRadius: 25,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: "2%",
+    marginTop: '4%'
+
+  },
+  text: {
+    fontSize: 27
+  },
+
+  textSelect: {
+    fontSize: 27,
+    color: 'white',
+    marginTop: '4%',
+    textAlign: 'center'
+
   },
   name:{
     fontSize:22,
@@ -84,10 +133,10 @@ const styles = StyleSheet.create({
     padding:10,
   },
   name:{
-    fontSize:28,
-    color: "#696969",
+    fontSize:30,
+    color:"#FFFFFF",
     fontWeight: "600",
-    marginTop:40,
+    marginTop:50,
   },
   info:{
     fontSize:16,
@@ -96,20 +145,19 @@ const styles = StyleSheet.create({
   },
   datePicker:{
     fontSize:18,
-    color: "#696969",
-    marginTop:10,
-    textAlign: 'center'
+    color: "#ffffff",
   },
-  buttonContainer: {
-    marginTop:10,
-    height:45,
-    flexDirection: 'row',
-    justifyContent: 'center',
+  container: {
+      backgroundColor: "#0a0a1a",
+      height: '100%',
+
+  },
+  buttonsContainer: {
+    flex: 1,
     alignItems: 'center',
-    marginBottom:20,
-    width:250,
-    borderRadius:30,
-    backgroundColor: "#00BFFF",
+    justifyContent: 'center',
+    backgroundColor: "#0a0a1a",
+    marginTop: '-10'
   },
   icon:{
     width: 20,
@@ -136,5 +184,12 @@ const styles = StyleSheet.create({
   count:{
     fontSize:18,
   },
+
+  datePickerView:{
+
+    backgroundColor: "#0a0a1a",
+
+    
+  }
   
 });

@@ -69,7 +69,7 @@ export default class Chat extends Component {
           <View style={styles.inputContainer}>
             <TextInput style={styles.inputs}
                 ref={input => { this.textInput = input }} 
-                placeholder="Write a message..."
+                placeholder="Escribe un mensaje..."
                 underlineColorAndroid='transparent'
                 onChangeText={(name_address) => {
                     this.setState({name_address})}

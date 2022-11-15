@@ -5,10 +5,10 @@ import {
   View,
   Image,
   TouchableOpacity,
-  Button
+  Button,
+  ImageBackground
 } from 'react-native';
 import { Rating } from 'react-native-ratings';
-import { ThemeProvider } from "@material-native-ui/theme-provider";
  
 
 export default class Calificar extends Component {
@@ -29,19 +29,24 @@ export default class Calificar extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <View style={styles.header}></View>
-          <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+          <View style={styles.header}>
+            <ImageBackground
+              source={require('../assets/background.png')}
+              style={styles.background}
+            ></ImageBackground>
+          </View>
+          <Image style={styles.avatar} source={{uri: 'https://image.shutterstock.com/mosaic_250/2780032/1854697390/stock-photo-head-shot-young-attractive-businessman-in-glasses-standing-in-modern-office-pose-for-camera-1854697390.jpg'}}/>
 
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>John Doe</Text>
-              <Text style={styles.info}>Electricista / Plomero</Text>
+              <Text style={styles.name}>Román Vázquez</Text>
+              <Text style={styles.info}>Informática</Text>
             </View>
           </View>
    
           <br/>  
           <Text style={styles.name}>Por favor ingrese su caificación</Text>
-        
+        <View style={styles.ratingContainer}>
           <Rating
            type='custom'
            ratingColor='#3498db'
@@ -50,18 +55,17 @@ export default class Calificar extends Component {
            imageSize={30}
            onFinishRating={this.setState}
            style={{ paddingVertical: 10 }}
-          />
+           />
+          </View>
         
-         <Button
-            title="Aceptar"
-            onPress={()=>this.props.navigation.navigate("Home")}
-          />
-        
-         <Button
-           title="Cancelar"
-           color="#a9a9a9"
-           onPress={()=>this.props.navigation.navigate("Home")}
-         />
+        <View style={styles.buttonsContainer}>
+          <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Home")}>
+            <Text style={styles.text}>Aceptar</Text>  
+          </TouchableOpacity>        
+          <TouchableOpacity style={styles.buttonContainerCancel} onPress={()=>this.props.navigation.navigate("Home")}>
+            <Text style={styles.text}>Cancelar</Text>  
+          </TouchableOpacity>        
+        </View>
         
      </View>
     );
@@ -70,8 +74,23 @@ export default class Calificar extends Component {
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#0a0a1a",
     height:200,
+  },
+  background: {
+    width: '100%',
+    height: 200
+  },
+  ratingContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#0a0a1a'
+  },
+  buttonsContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: "#0a0a1a",
+    marginTop: '-10'
   },
   avatar: {
     width: 130,
@@ -84,11 +103,42 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginTop:130
   },
-  name:{
-    fontSize:22,
-    color:"#FFFFFF",
-    fontWeight:'600',
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#54b6e9',
+    color: 'black',
+    width: 350,
+    borderRadius: 25,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: "2%",
+    marginTop: '4%'
+
   },
+  buttonContainerCancel: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#a9a9a9',
+    color: 'black',
+    width: 350,
+    borderRadius: 25,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: "2%",
+    marginTop: '4%'
+
+  },
+  textSelect: {
+    fontSize: 27,
+    color: 'white',
+    marginTop: '4%',
+    textAlign: 'center'
+
+  },
+
   body:{
     marginTop:5,
   },
@@ -98,10 +148,12 @@ const styles = StyleSheet.create({
     padding:10,
   },
   name:{
-    fontSize:28,
-    color: "#696969",
+    fontSize:30,
+    color:"#FFFFFF",
     fontWeight: "600",
-    marginTop:40,
+    marginTop:50,
+    textAlign: 'center'
+
   },
   info:{
     fontSize:16,
@@ -114,17 +166,7 @@ const styles = StyleSheet.create({
     marginTop:10,
     textAlign: 'center'
   },
-  buttonContainer: {
-    marginTop:10,
-    height:45,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginBottom:20,
-    width:250,
-    borderRadius:30,
-    backgroundColor: "#00BFFF",
-  },
+
   icon:{
     width: 20,
     height: 20,
@@ -150,5 +192,10 @@ const styles = StyleSheet.create({
   count:{
     fontSize:18,
   },
+  container: {
+    backgroundColor: "#0a0a1a",
+    height: '100%',
+
+},
   
 });

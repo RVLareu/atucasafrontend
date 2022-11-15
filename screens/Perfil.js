@@ -4,7 +4,8 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  ImageBackground,
 } from 'react-native';
 
 export default class Perfil extends Component {
@@ -12,38 +13,43 @@ export default class Perfil extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <View style={styles.header}></View>
-          <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
+          <View style={styles.header}>
+            <ImageBackground
+              source={require('../assets/background.png')}
+              style={styles.background}
+            ></ImageBackground>
+          </View>
+          <Image style={styles.avatar} source={{uri: 'https://image.shutterstock.com/mosaic_250/2780032/1854697390/stock-photo-head-shot-young-attractive-businessman-in-glasses-standing-in-modern-office-pose-for-camera-1854697390.jpg'}}/>
 
           <View style={styles.profileDetail}>
             <View style={styles.detailContent}>
               <Text style={styles.title}>Trabajos</Text>
-              <Text style={styles.count}>200</Text>
+              <Text style={styles.count}>37</Text>
             </View>
             <View style={styles.detailContent}>
               <Text style={styles.title}>Calificación</Text>
-              <Text style={styles.count}>3.3</Text>
+              <Text style={styles.count}>4.3</Text>
             </View>
           </View>
 
 
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>John Doe</Text>
-              <Text style={styles.info}>Electricista / Plomero</Text>
-              <Text style={styles.description}>Trabajador Responsable comprometido con el trabajo del lorem ipsum lorem ipsum</Text>
+              <Text style={styles.name}>Román Vázquez</Text>
+              <Text style={styles.info}>Informática</Text>
+              <Text style={styles.description}>Estudiante de ingeniería informática</Text>
               
               <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Chat")}>
               <Image style={styles.icon} source={{uri: "https://img.icons8.com/ios-glyphs/512/filled-sent.png"}}/>
-                <Text>Enviar Mensaje</Text>  
+                <Text style={styles.text}>Enviar Mensaje</Text>  
               </TouchableOpacity>              
               <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("AgendarCita")}>
               <Image style={styles.icon} source={{uri: "https://img.icons8.com/ios-filled/512/calendar-11.png"}}/>
-                <Text>Agendar Cita</Text> 
+                <Text style={styles.text}>Agendar Cita</Text> 
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Calificaciones")}>
               <Image style={styles.icon} source={{uri: "https://img.icons8.com/material/512/christmas-star.png"}}/>
-                <Text>Ver Calificaciones</Text> 
+                <Text style={styles.text}>Ver Calificaciones</Text> 
               </TouchableOpacity>
             </View>
         </View>
@@ -54,59 +60,68 @@ export default class Perfil extends Component {
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#0a0a1a",
     height:200,
   },
+    background: {
+    width: '100%',
+    height: 200
+  },
   avatar: {
-    width: 130,
-    height: 130,
+    width: 150,
+    height: 150,
     borderRadius: 63,
     borderWidth: 4,
     borderColor: "white",
-    marginBottom:10,
+    marginBottom:5,
     alignSelf:'center',
     position: 'absolute',
     marginTop:130
   },
   name:{
-    fontSize:22,
+    fontSize:30,
     color:"#FFFFFF",
     fontWeight:'600',
+    marginTop:-15,
   },
   body:{
-    marginTop:5,
+    marginTop: -5,
   },
   bodyContent: {
     flex: 1,
     alignItems: 'center',
-    padding:10,
-  },
-  name:{
-    fontSize:28,
-    color: "#696969",
-    fontWeight: "600"
+    padding:4,
   },
   info:{
-    fontSize:16,
+    fontSize:22,
     color: "#00BFFF",
-    marginTop:10
+    marginTop:5
   },
   description:{
     fontSize:16,
     color: "#696969",
-    marginTop:10,
+    marginTop:5,
     textAlign: 'center'
   },
+  container: {
+    backgroundColor: "#0a0a1a",
+    height: '100%'
+  },
   buttonContainer: {
-    marginTop:10,
-    height:45,
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    marginBottom:20,
-    width:250,
-    borderRadius:30,
-    backgroundColor: "#00BFFF",
+    backgroundColor: '#54b6e9',
+    color: 'black',
+    width: 350,
+    borderRadius: 25,
+    textAlign: 'center',
+    fontWeight: 'bold',
+    padding: "2%",
+    marginTop: '4%'
+
+  },
+  text: {
+    fontSize: 27
   },
   icon:{
     width: 20,
@@ -116,7 +131,7 @@ const styles = StyleSheet.create({
 
 
   profileDetail:{
-    marginTop:70,
+    marginTop:20,
     flex:1,
     alignSelf: 'center',
     alignItems: 'center',
@@ -128,9 +143,10 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize:20,
-    color: "#00CED1"
+    color: "#ffffff"
   },
   count:{
     fontSize:18,
+    color: "#ffffff"
   },
 });

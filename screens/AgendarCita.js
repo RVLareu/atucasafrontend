@@ -146,6 +146,8 @@ const styles = StyleSheet.create({
   datePicker:{
     fontSize:18,
     color: "#ffffff",
+    width: 600,
+    alignSelf: 'center'
   },
   container: {
       backgroundColor: "#0a0a1a",

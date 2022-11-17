@@ -21,6 +21,9 @@ export default class Buscador extends Component {
         {id:1, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - Carpintero"},
         {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Enrique Romero - Plomero"},
         {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Román Vázquez - Informática"}, 
+        {id:4, icon:"https://img.icons8.com/material/512/electricity.png", description: "Lucas Monk - Electricista"},
+        {id:5, icon:"https://img.icons8.com/material/512/electricity.png", description: "Mariano Correa - Electricista"},
+        {id:6, icon:"https://img.icons8.com/material/512/electricity.png", description: "Pablo Martinez - Electricista"},
 
       ],
       dataToShow: [

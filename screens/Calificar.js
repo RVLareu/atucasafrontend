@@ -9,6 +9,7 @@ import {
   ImageBackground
 } from 'react-native';
 import { Rating } from 'react-native-ratings';
+import AwesomeAlert from 'react-native-awesome-alerts';
  
 
 export default class Calificar extends Component {
@@ -16,9 +17,23 @@ export default class Calificar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-            starCount: 3.5     
+            starCount: 3.5,
+            showAlert: false   
         }
   }
+  
+  setShowAlert = () => {
+    this.setState({
+      showAlert: true
+    });
+  };
+
+  setHideAlert = () => {
+    this.setState({
+      showAlert: false
+    });
+  };
+
   
   ratingCompleted(rating) {
     this.setState({
@@ -27,6 +42,9 @@ export default class Calificar extends Component {
   }
 
   render() {
+  
+    const {showAlert} = this.state;
+    
     return (
       <View style={styles.container}>
           <View style={styles.header}>
@@ -56,17 +74,34 @@ export default class Calificar extends Component {
            onFinishRating={this.setState}
            style={{ paddingVertical: 10 }}
            />
-          </View>
+        </View>
         
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Home")}>
+          <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.setShowAlert()}>
             <Text style={styles.text}>Aceptar</Text>  
           </TouchableOpacity>        
-          <TouchableOpacity style={styles.buttonContainerCancel} onPress={()=>this.props.navigation.navigate("Home")}>
+          <TouchableOpacity style={styles.buttonContainerCancel} onPress={()=>this.props.navigation.navigate("Citas")}>
             <Text style={styles.text}>Cancelar</Text>  
           </TouchableOpacity>        
         </View>
         
+        <AwesomeAlert
+                  show={showAlert}
+                  showProgress={false}
+                  title="Calificación realizada"
+                  message="Gracias por su opinión!"
+                  closeOnTouchOutside={true}
+                  closeOnHardwareBackPress={false}
+                  showCancelButton={false}
+                  showConfirmButton={true}
+                  confirmText="Aceptar"
+                  confirmButtonColor="#90ee90"
+                  onConfirmPressed={() => {
+                   this.setHideAlert();
+                   this.props.navigation.navigate("Home");
+                   }}
+                />
+                 
      </View>
     );
   }
@@ -80,6 +115,9 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 200
   },
+  text: {
+    fontSize: 27
+  },  
   ratingContainer: {
     justifyContent: 'center',
     alignItems: 'center',

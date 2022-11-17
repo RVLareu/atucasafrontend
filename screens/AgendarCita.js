@@ -17,7 +17,7 @@ export default class AgendarCita extends Component {
   constructor(props) {
     super(props);
     this.state = {
-            selectedDate:""       
+            date: new Date()     
         }
   }
 
@@ -43,7 +43,9 @@ export default class AgendarCita extends Component {
         <br/> 
         <View style={styles.datePickerView}>
           <DatePicker style={styles.datePicker}
-            onSelectedChange={date => this.state.selectedDate=date}
+            date={this.state.date}
+            //onSelectedChange={date => this.setState({date: date})}
+            onDateChange={date => this.setState({date: date})}
           />
         </View>
         
@@ -149,7 +151,7 @@ const styles = StyleSheet.create({
     color: "#ffffff",
     width: 300,
     alignSelf: 'center',
-    mode: "datetime"
+    mode: "date"
   },
   container: {
       backgroundColor: "#0a0a1a",

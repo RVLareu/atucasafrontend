@@ -9,6 +9,8 @@ import {
   ScrollView,
   FlatList,
 } from 'react-native';
+import AwesomeAlert from 'react-native-awesome-alerts';
+
 
 export default class Pago extends Component {
 
@@ -18,18 +20,49 @@ export default class Pago extends Component {
       data: [
         {id:1,  title: "Efectivo",      color:"#0f3648", image:"https://img.icons8.com/office/512/cash-in-hand.png"},
         {id:2,  title: "Crédito",     color:"#0f3648", image:"https://img.icons8.com/office/512/visa.png"},
-        {id:2,  title: "Crypto",     color:"#0f3648", image:"https://img.icons8.com/office/512/blockchain.png"},
-      ]
+        {id:3,  title: "Crypto",     color:"#0f3648", image:"https://img.icons8.com/office/512/blockchain.png"},
+        {id:4,  title: "Débito",     color:"#0f3648", image:"https://img.icons8.com/office/512/insert-card.png"},
+      ],
+      showAlert: false,
+      showAlert2: false 
     };
   }
+
+  setShowAlert = () => {
+    this.setState({
+      showAlert: true
+    });
+  };
+
+  setHideAlert = () => {
+    this.setState({
+      showAlert: false
+    });
+  };
+
+  setShowAlert2 = () => {
+    this.setState({
+      showAlert2: true
+    });
+  };
+
+  setHideAlert2 = () => {
+    this.setState({
+      showAlert2: false
+    });
+  };
 
 
 
   render() {
+  
+    const {showAlert} = this.state;
+    const {showAlert2} = this.state;
+  
     return (
     
       <View style={styles.container}>
-        
+        <br/> <br/>
         <Text style={styles.title}>Elija un método de pago</Text>
       
         <FlatList style={styles.list}
@@ -44,7 +77,9 @@ export default class Pago extends Component {
           renderItem={({item}) => {
             return (
               <View>
-                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} onPress={() => this.props.navigation.navigate("Calificar")}>
+                <TouchableOpacity style={[styles.card, {backgroundColor:item.color}]} 
+                  onPress={() => {this.setShowAlert()}
+                         }>
                 
                   <Image style={styles.cardImage} source={{uri:item.image}}/>
                 </TouchableOpacity>
@@ -54,9 +89,49 @@ export default class Pago extends Component {
                     <Text style={[styles.title, {color:'#f2f3f2'}]}>{item.title}</Text>
                   </View>
                 </View>
+                
               </View>
             )
           }}/>
+          
+          <AwesomeAlert
+                  show={showAlert}
+                  showProgress={false}
+                  title="Confirmación de pago"
+                  message="Desea efectuar el pago?"
+                  closeOnTouchOutside={true}
+                  closeOnHardwareBackPress={false}
+                  showCancelButton={true}
+                  showConfirmButton={true}
+                  cancelText="Cancelar"
+                  confirmText="Confirmar"
+                  confirmButtonColor='#54b6e9'
+                  onCancelPressed={() => {
+                   this.setHideAlert();
+                   }}
+                  onConfirmPressed={() => {
+                   this.setHideAlert();
+                   this.setShowAlert2();
+                   }}
+                  />
+                  
+            <AwesomeAlert
+                  show={showAlert2}
+                  showProgress={false}
+                  title="Su pago ha sido realizado com éxito"
+                  message="La cita con el profesional ha sido confirmada"
+                  closeOnTouchOutside={true}
+                  closeOnHardwareBackPress={false}
+                  showCancelButton={false}
+                  showConfirmButton={true}
+                  confirmText="Aceptar"
+                  confirmButtonColor="#90ee90"
+                  onConfirmPressed={() => {
+                   this.setHideAlert2();
+                   this.props.navigation.navigate("Buscar");
+                   }}
+                />      
+          
       </View>
     );
   }
@@ -132,4 +207,5 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     color: "#00CED1"
   },
+  
 });     

@@ -8,6 +8,7 @@ import {
   Alert,
   ScrollView,
   FlatList,
+  ImageBackground,
 } from 'react-native';
 import AwesomeAlert from 'react-native-awesome-alerts';
 
@@ -62,9 +63,17 @@ export default class Pago extends Component {
     return (
     
       <View style={styles.container}>
-        <br/> <br/>
+        <br/>
+        
+        <View style={styles.header}>
+            <ImageBackground
+              source={require('../assets/background.png')}
+              style={styles.background}
+            ></ImageBackground>
+          </View>
+        <br/>
         <Text style={styles.title}>Elija un método de pago</Text>
-      
+        
         <FlatList style={styles.list}
           contentContainerStyle={styles.listContainer}
           data={this.state.data}
@@ -128,7 +137,7 @@ export default class Pago extends Component {
                   confirmButtonColor="#90ee90"
                   onConfirmPressed={() => {
                    this.setHideAlert2();
-                   this.props.navigation.navigate("Buscar");
+                   this.props.navigation.navigate("Citas");
                    }}
                 />      
           
@@ -199,6 +208,13 @@ const styles = StyleSheet.create({
     width: 50,
     alignSelf:'center',
     filter: 'invert(50%) brightness(150%)'
+  },
+  header:{
+    height:200,
+  },
+  background: {
+    width: '100%',
+    height: 200
   },
   title:{
     fontSize:24,

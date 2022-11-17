@@ -9,6 +9,7 @@ import Buscador from './screens/Buscador';
 import AgendarCita from './screens/AgendarCita';
 import Pago from './screens/Pago';
 import Calificar from './screens/Calificar';
+import Citas from './screens/Citas';
 
 
 const Stack = createNativeStackNavigator();
@@ -49,7 +50,10 @@ const App = () => {
             name="Calificar"
             component={Calificar}
           />
-
+          <Stack.Screen
+            name="Citas"
+            component={Citas}
+          />
                          
         </Stack.Navigator>
     </NavigationContainer>

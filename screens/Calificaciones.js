@@ -61,6 +61,7 @@ export default class Calificaciones extends Component {
             </View>
           );
         }}/>
+        
     );
   }
 }
@@ -123,5 +124,5 @@ const styles = StyleSheet.create({
     // will not surpass 3/4 of the screen
     width: '75%',
     },
-
+    
 }); 

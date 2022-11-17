@@ -34,12 +34,11 @@ export default class AgendarCita extends Component {
 
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>Román Vázquez</Text>
-              <Text style={styles.info}>Informática</Text>
+              <Text style={styles.name}>Lucas Monk</Text>
+              <Text style={styles.info}>Electricista</Text>
             </View>
           </View>
    
-        <br/>  
         <Text style={styles.textSelect}>Seleccione una fecha</Text>
         <br/> 
         <View style={styles.datePickerView}>
@@ -88,7 +87,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#54b6e9',
     color: 'black',
-    width: 350,
+    width: 300,
     borderRadius: 25,
     textAlign: 'center',
     fontWeight: 'bold',
@@ -102,7 +101,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#a9a9a9',
     color: 'black',
-    width: 350,
+    width: 300,
     borderRadius: 25,
     textAlign: 'center',
     fontWeight: 'bold',
@@ -148,8 +147,9 @@ const styles = StyleSheet.create({
   datePicker:{
     fontSize:18,
     color: "#ffffff",
-    width: 400,
-    alignSelf: 'center'
+    width: 300,
+    alignSelf: 'center',
+    mode: "datetime"
   },
   container: {
       backgroundColor: "#0a0a1a",

@@ -39,8 +39,8 @@ export default class Calificar extends Component {
 
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>Román Vázquez</Text>
-              <Text style={styles.info}>Informática</Text>
+              <Text style={styles.name}>Lucas Monk</Text>
+              <Text style={styles.info}>Electricista</Text>
             </View>
           </View>
    

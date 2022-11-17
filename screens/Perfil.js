@@ -33,9 +33,9 @@ export default class Perfil extends Component {
           </View>
           <View style={styles.body}>
             <View style={styles.bodyContent}>
-              <Text style={styles.name}>Román Vázquez</Text>
-              <Text style={styles.info}>Informática</Text>
-              <Text style={styles.description}>Estudiante de ingeniería informática</Text>
+              <Text style={styles.name}>Lucas Monk</Text>
+              <Text style={styles.info}>Electricista</Text>
+              <Text style={styles.description}>Electricista matriculado en CABA</Text>
               <br/>
               <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Chat")}>
               <Image style={styles.icon} source={{uri: "https://img.icons8.com/ios-glyphs/512/filled-sent.png"}}/>

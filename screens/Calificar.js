@@ -63,7 +63,7 @@ export default class Calificar extends Component {
           </View>
    
           <br/>  
-          <Text style={styles.name}>Por favor ingrese su caificación</Text>
+          <Text style={styles.name}>Por favor ingrese su calificación</Text>
         <View style={styles.ratingContainer}>
           <Rating
            type='custom'

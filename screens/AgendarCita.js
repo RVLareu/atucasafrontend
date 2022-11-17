@@ -46,6 +46,7 @@ export default class AgendarCita extends Component {
             date={this.state.date}
             //onSelectedChange={date => this.setState({date: date})}
             onDateChange={date => this.setState({date: date})}
+            onTimeChange={date => this.setState({date: date})}
           />
         </View>
         
@@ -147,11 +148,12 @@ const styles = StyleSheet.create({
     marginTop:10,
   },
   datePicker:{
-    fontSize:18,
+    fontSize:15,
     color: "#ffffff",
-    width: 300,
+    width: 350,
     alignSelf: 'center',
-    mode: "date"
+    mode: "datetime",
+    current: "2022-11-01"
   },
   container: {
       backgroundColor: "#0a0a1a",

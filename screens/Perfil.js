@@ -36,7 +36,7 @@ export default class Perfil extends Component {
               <Text style={styles.name}>Lucas Monk</Text>
               <Text style={styles.info}>Electricista</Text>
               <Text style={styles.description}>Electricista matriculado en CABA</Text>
-              <br/>
+              <br/> <br/> <br/>
               <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Chat")}>
               <Image style={styles.icon} source={{uri: "https://img.icons8.com/ios-glyphs/512/filled-sent.png"}}/>
                 <Text style={styles.text}>Enviar Mensaje</Text>  
@@ -49,7 +49,7 @@ export default class Perfil extends Component {
               <Image style={styles.icon} source={{uri: "https://img.icons8.com/material/512/christmas-star.png"}}/>
                 <Text style={styles.text}>Ver Calificaciones</Text> 
               </TouchableOpacity>
-              <br/> <br/>
+              <br/> <br/> <br/>
             </View>
         </View>
       </View>

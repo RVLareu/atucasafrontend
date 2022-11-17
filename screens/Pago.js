@@ -127,7 +127,7 @@ export default class Pago extends Component {
             <AwesomeAlert
                   show={showAlert2}
                   showProgress={false}
-                  title="Su pago ha sido realizado com éxito"
+                  title="Su pago ha sido realizado con éxito"
                   message="La cita con el profesional ha sido confirmada"
                   closeOnTouchOutside={true}
                   closeOnHardwareBackPress={false}

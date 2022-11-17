@@ -20,7 +20,7 @@ export default class Perfil extends Component {
             ></ImageBackground>
           </View>
           <Image style={styles.avatar} source={{uri: 'https://image.shutterstock.com/mosaic_250/2780032/1854697390/stock-photo-head-shot-young-attractive-businessman-in-glasses-standing-in-modern-office-pose-for-camera-1854697390.jpg'}}/>
-
+          <br/> <br/>
           <View style={styles.profileDetail}>
             <View style={styles.detailContent}>
               <Text style={styles.title}>Trabajos</Text>
@@ -31,14 +31,12 @@ export default class Perfil extends Component {
               <Text style={styles.count}>4.3</Text>
             </View>
           </View>
-
-
           <View style={styles.body}>
             <View style={styles.bodyContent}>
               <Text style={styles.name}>Román Vázquez</Text>
               <Text style={styles.info}>Informática</Text>
               <Text style={styles.description}>Estudiante de ingeniería informática</Text>
-              
+              <br/>
               <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Chat")}>
               <Image style={styles.icon} source={{uri: "https://img.icons8.com/ios-glyphs/512/filled-sent.png"}}/>
                 <Text style={styles.text}>Enviar Mensaje</Text>  
@@ -51,6 +49,7 @@ export default class Perfil extends Component {
               <Image style={styles.icon} source={{uri: "https://img.icons8.com/material/512/christmas-star.png"}}/>
                 <Text style={styles.text}>Ver Calificaciones</Text> 
               </TouchableOpacity>
+              <br/> <br/>
             </View>
         </View>
       </View>
@@ -81,10 +80,9 @@ const styles = StyleSheet.create({
     fontSize:30,
     color:"#FFFFFF",
     fontWeight:'600',
-    marginTop:-15,
   },
   body:{
-    marginTop: -5,
+    marginTop: 0,
   },
   bodyContent: {
     flex: 1,

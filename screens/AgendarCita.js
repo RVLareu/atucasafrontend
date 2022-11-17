@@ -41,6 +41,7 @@ export default class AgendarCita extends Component {
    
         <br/>  
         <Text style={styles.textSelect}>Seleccione una fecha</Text>
+        <br/> 
         <View style={styles.datePickerView}>
           <DatePicker style={styles.datePicker}
             onSelectedChange={date => this.state.selectedDate=date}
@@ -55,6 +56,7 @@ export default class AgendarCita extends Component {
             <Text style={styles.text}>Cancelar</Text>  
           </TouchableOpacity>        
         </View>
+        <br/> <br/>
         
       </ScrollView>
     );
@@ -146,7 +148,7 @@ const styles = StyleSheet.create({
   datePicker:{
     fontSize:18,
     color: "#ffffff",
-    width: 600,
+    width: 400,
     alignSelf: 'center'
   },
   container: {

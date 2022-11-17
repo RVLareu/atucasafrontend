@@ -18,18 +18,18 @@ export default class Buscador extends Component {
     super(props);
     this.state = {
       data: [
-        {id:1, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - Carpintero"},
-        {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Enrique Romero - Plomero"},
-        {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Román Vázquez - Informática"}, 
-        {id:4, icon:"https://img.icons8.com/material/512/electricity.png", description: "Lucas Monk - Electricista"},
-        {id:5, icon:"https://img.icons8.com/material/512/electricity.png", description: "Mariano Correa - Electricista"},
-        {id:6, icon:"https://img.icons8.com/material/512/electricity.png", description: "Pablo Martinez - Electricista"},
+        {id:1, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - Carpintero", rating: 3.3, km: 0.9},
+        {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Enrique Romero - Plomero", rating: 3.9, km: 1.1},
+        {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Román Vázquez - Informática", rating: 4.7, km: 0.6}, 
+        {id:4, icon:"https://img.icons8.com/material/512/electricity.png", description: "Lucas Monk - Electricista", rating: 4.3, km: 0.8},
+        {id:5, icon:"https://img.icons8.com/material/512/electricity.png", description: "Mariano Correa - Electricista", rating: 4.0, km: 1.5},
+        {id:6, icon:"https://img.icons8.com/material/512/electricity.png", description: "Pablo Martinez - Electricista", rating: 3.8, km: 1.2},
 
       ],
       dataToShow: [
-        {id:1, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - Carpintero"},
-        {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Román Vázquez - Informática"},
-        {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Lucas Monk - Electricista"}, 
+        {id:1, icon:"https://img.icons8.com/material/512/hammer.png", description: "Juan Perez - Carpintero", rating: 3.3, km: 0.9},
+        {id:2, icon:"https://img.icons8.com/material/512/plumbing.png", description: "Román Vázquez - Informática", rating: 4.7, km: 0.6},
+        {id:3, icon:"https://img.icons8.com/material/512/electricity.png", description: "Lucas Monk - Electricista", rating: 4.3, km: 0.8}, 
 
 
       ],
@@ -75,8 +75,8 @@ export default class Buscador extends Component {
                 
                     
                     <Text style={styles.description} onPress={()=>this.props.navigation.navigate("Perfil")}>{item.description}</Text>
-                    <Text style={styles.distance}>1.5 km</Text>
-                    <Text style={styles.icon}>3.3</Text>
+                    <Text style={styles.distance}>{item.km} Km</Text>
+                    <Text style={styles.icon}>{item.rating}</Text>
                     <Image style={styles.star}source={{uri: "https://img.icons8.com/ios/512/christmas-star.png"}}/>
 
 

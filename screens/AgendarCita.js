@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -10,18 +10,35 @@ import {
   ImageBackground
 } from 'react-native';
 import DatePicker from 'react-native-modern-datepicker';
+import Api from "../components/Session";
+import { format } from 'date-fns';
+import Moment from 'moment';
+//import { useNavigate } from "react-router-dom";
  
 
-export default class AgendarCita extends Component {
+const AgendarCita = (props) => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-            date: new Date()     
-        }
+  const [date, setDate] = useState(new Date());  
+  //const navigate = useNavigate();        
+       
+  const Agendar = () => {     
+    Api.post("request-turn", 
+                  JSON.stringify({ 'user_id': 1, 'professional_id': 1, 'day': format(date, "yyyy-MM-dd"), 'price': 0 }),
+                {
+                    headers: { 'Content-Type': 'application/json' }
+                })    
   }
+  
+  const CambiarFecha = (date) => {
+     setDate(date)
+  }
+  
+  
+  useEffect(() => {
+    Agendar();
+    }, []);
+  
 
-  render() {
     return (
       <ScrollView style={styles.container}>
           <View style={styles.header}>
@@ -43,27 +60,26 @@ export default class AgendarCita extends Component {
         <br/> 
         <View style={styles.datePickerView}>
           <DatePicker style={styles.datePicker}
-            date={this.state.date}
-            //onSelectedChange={date => this.setState({date: date})}
-            onDateChange={date => this.setState({date: date})}
-            onTimeChange={date => this.setState({date: date})}
+            date={date}
+            onSelectedChange={(date) => CambiarFecha(date)}
+            //onDateChange={(date) => this.setState({date: date})}
           />
         </View>
         
         <View style={styles.buttonsContainer}>
-          <TouchableOpacity style={styles.buttonContainer} onPress={()=>this.props.navigation.navigate("Pago")}>
+          <TouchableOpacity style={styles.buttonContainer} onPress={()=>{Agendar; props.navigation.navigate("Pago")}}>
             <Text style={styles.text}>Aceptar</Text>  
           </TouchableOpacity>        
-          <TouchableOpacity style={styles.buttonContainerCancel} onPress={()=>this.props.navigation.navigate("Perfil")}>
+          <TouchableOpacity style={styles.buttonContainerCancel} onPress={() => props.navigation.navigate("Perfil")}>
             <Text style={styles.text}>Cancelar</Text>  
           </TouchableOpacity>        
         </View>
         <br/> <br/>
         
       </ScrollView>
-    );
-  }
-}
+    )
+} 
+export default AgendarCita
 
 const styles = StyleSheet.create({
   header:{

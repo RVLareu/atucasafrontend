@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   header:{
     height:200,
   },
-    background: {
+  background: {
     width: '100%',
     height: 200
   },

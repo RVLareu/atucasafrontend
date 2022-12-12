@@ -10,6 +10,7 @@ import AgendarCita from './screens/AgendarCita';
 import Pago from './screens/Pago';
 import Calificar from './screens/Calificar';
 import Citas from './screens/Citas';
+import Registrarse from './screens/Registrarse';
 
 
 const Stack = createNativeStackNavigator();
@@ -18,6 +19,10 @@ const App = () => {
   return (
     <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen
+            name="Registrarse"
+            component={Registrarse}
+          />
           <Stack.Screen
             name="Home"
             component={Home}
@@ -54,6 +59,7 @@ const App = () => {
             name="Citas"
             component={Citas}
           />
+          
                          
         </Stack.Navigator>
     </NavigationContainer>

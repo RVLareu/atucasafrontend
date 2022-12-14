@@ -11,6 +11,7 @@ import Pago from './screens/Pago';
 import Calificar from './screens/Calificar';
 import Citas from './screens/Citas';
 import Registrarse from './screens/Registrarse';
+import Login from './screens/Login';
 
 
 const Stack = createNativeStackNavigator();
@@ -22,6 +23,10 @@ const App = () => {
           <Stack.Screen
             name="Registrarse"
             component={Registrarse}
+          />
+          <Stack.Screen
+            name="Login"
+            component={Login}
           />
           <Stack.Screen
             name="Home"

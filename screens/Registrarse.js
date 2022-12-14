@@ -43,7 +43,7 @@ export default class Registrarse extends Component {
    }
    
    handleClose = () => {
-     //this.props.setOpen(false)
+     this.props.setOpen()
    }
    
    handleUserChange = (event) => {
@@ -87,9 +87,7 @@ export default class Registrarse extends Component {
       <ImageBackground
         source={require('../assets/background.png')}
       >
-        <View
-            onClose={() => {this.handleClose}}>
-         
+        <View onClose={() => {this.handleClose}}>
             <Box>
                 <Stack direction="column" spacing={2} sx={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
                     <br/>
@@ -98,7 +96,7 @@ export default class Registrarse extends Component {
                     <TextField error={this.state.errorUser}  required id="outlined-basic" label="Usuario" variant="outlined" onChange={(event) => {this.handleUserChange(event)}} helperText={this.state.errorUser ? USER_ERROR : ''}/>
                     <TextField error={this.state.errorPwd} required id="outlined-basic" label="Contraseña" variant="outlined" type="password" onChange={(event) => {this.handlePwdChange(event)}} helperText={this.state.errorPwd ? PWD_ERROR : ''}/>
                     <TextField error={this.state.errorMatch} required id="outlined-basic" label="Confirmar Contraseña" variant="outlined"  type="password" onChange={(event) => {this.handleMatchPwdChange(event)}} helperText={this.state.errorMatch ? PWD_MATCH_ERROR : ''}/>
-                <Button variant="contained" onClick={() => {this.handleRegister(); /*this.props.navigation.navigate("Home")*/}}>Registrarse</Button>
+                <Button variant="contained" onClick={() => {this.handleRegister(); this.props.navigation.navigate("Login")}}>Registrarse</Button>
                 <br/>
                 </Stack>
             </Box>

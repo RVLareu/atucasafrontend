@@ -15,6 +15,7 @@ import {
   TouchableOpacity,
   ImageBackground,
 } from 'react-native';
+//import Modal from '@mui/material/Modal';
 
 
 const PWD_ERROR = "At least 8 characters long and contain at least one number, one uppercase letter, and one lowercase letter."
@@ -39,11 +40,16 @@ export default class Registrarse extends Component {
              errorUser: false,
              errorMatch: false 
            }
- 
+    this.handleOpen = this.handleOpen.bind(this);           
+    this.handleClose = this.handleClose.bind(this);
+   }
+   
+   handleOpen = () => {
+     this.props.handleOpen()
    }
    
    handleClose = () => {
-     this.props.setOpen()
+     this.props.handleSetClose();
    }
    
    handleUserChange = (event) => {
@@ -72,7 +78,7 @@ export default class Registrarse extends Component {
                 headers: { 'Content-Type': 'application/json' }
             }
         ).then(() => {
-            //this.props.setOpen(false);
+            //this.handleClose();
             swal.fire({title: "Exito", text:"Te registraste exitosamente!", icon: "success"})
             
         }).catch((err) => {
@@ -87,8 +93,8 @@ export default class Registrarse extends Component {
       <ImageBackground
         source={require('../assets/background.png')}
       >
-        <View onClose={() => {this.handleClose}}>
-            <Box>
+        <Stack direction="column" >
+             <Box>
                 <Stack direction="column" spacing={2} sx={{flex:1, alignItems: 'center', justifyContent: 'center'}}>
                     <br/>
                     <Text style={[{color:'#f2f3f2'}]}>Unite a ATuCasa</Text>
@@ -99,8 +105,8 @@ export default class Registrarse extends Component {
                 <Button variant="contained" onClick={() => {this.handleRegister(); this.props.navigation.navigate("Login")}}>Registrarse</Button>
                 <br/>
                 </Stack>
-            </Box>
-        </View>
+            </Box>    
+        </Stack>
       </ImageBackground>
    );
    

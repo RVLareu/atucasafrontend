@@ -1,13 +1,12 @@
 import Api from "../components/Session";
 import { useRef, useState, useEffect } from 'react';
-//import useAuth from '../hooks/useAuth';
+//import useAuth from
 import { Link, useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { Component } from 'react';
 import Registrarse from '../screens/Registrarse';
 import Stack from '@mui/material/Stack';
 import { Button, Divider, Typography, TextField } from '@mui/material';
-
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material';
 
@@ -50,10 +49,16 @@ export default class Login extends Component {
    }
    
    
-   handleOpen = () => {
+   handleOpen = () => 
+     this.handleSetOpen();
+       
+    handleSetOpen = () => {
      this.setState({open: true})
     };
    
+   handleSetClose = () => {
+     this.setState({open: false})
+    };  
    
    handleUser = e => {
      this.setState({user: e.target.value})
@@ -90,7 +95,7 @@ export default class Login extends Component {
 
             window.localStorage.setItem("username", this.state.user)
             //navigate(from, { replace: true });
-            window.location.href = from;
+            //window.location.href = "Home";           
         } catch (err) {
             setError(true)
             if (!err?.response) {
@@ -114,14 +119,12 @@ export default class Login extends Component {
         source={require('../assets/background.png')}
       >
         <ThemeProvider theme={theme}>
-            <Registrarse setOpen={() => this.handleOpen} handleOpen={() => this.handleOpen} open={this.state.open}/>
             <Stack direction="row" spacing={15} sx={{flex: '1', alignItems:'center', justifyContent: 'center', mt: 3}}> 
                 <Stack direction="column" spacing={5} sx={{flex:1, alignItems:'center', maxWidth: '50%'}}>
                     <Typography color="#0000ff" variant="h3" >
                         ATuCasa
                     </Typography>
-                    //<img src={Image} height='90%' width='90%'/>
-                    <Typography color="#dc9c13" variant="subtitle1"> 
+                    <Typography color="#0000ff" variant="subtitle1"> 
                         Ingresá a ATuCasa
                     </Typography>
                 </Stack>    
@@ -135,7 +138,7 @@ export default class Login extends Component {
                         ¿Olvidaste tu contraseña?
                     </Typography>
                     <Divider />
-                    <Button variant="contained" sx={{color: '#f2f3f2', fontWeight: 'bold'}} onClick={() => this.handleOpen}>
+                    <Button variant="contained" sx={{color: '#f2f3f2', fontWeight: 'bold'}} onClick={() => {/*this.handleOpen;*/ this.props.navigation.navigate("Registrarse")}}>
                         Crear cuenta nueva
                     </Button>
                 </Stack>

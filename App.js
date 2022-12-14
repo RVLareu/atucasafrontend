@@ -21,12 +21,12 @@ const App = () => {
     <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
-            name="Registrarse"
-            component={Registrarse}
-          />
-          <Stack.Screen
             name="Login"
             component={Login}
+          />
+          <Stack.Screen
+            name="Registrarse"
+            component={Registrarse}
           />
           <Stack.Screen
             name="Home"
